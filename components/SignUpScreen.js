@@ -22,8 +22,7 @@ export default class SignInScreen extends Component {
 
     test = () => {
         fetch("http://192.168.43.92:5000/signup", {
-            method: 'POST',
-            
+            method: 'POST',            
             headerss: {
                 'Accept': 'application/json',
                 "Content-Type": "application/json",                
@@ -34,17 +33,21 @@ export default class SignInScreen extends Component {
             })
         })
             .then((resp)=>{
-                // return resp.json();
+                return resp.json();
             })
-            // .then((jsonData) => {
-            //     console.log(JSON.stringify(jsonData));
-            //     if(jsonData['result'] == true){
-            //         AsyncStorage.setItem('USER', jsonData.user);
-            //         AsyncStorage.setItem('TOKEN', jsonData.token);
-            //         this.props.navigation.navigate('Dashboard');
-            //     }
-            //     alert(jsonData['user']);
-            // })
+            .then((jsonData) => {
+                console.log(JSON.stringify(jsonData));
+                if(jsonData['code'] == 1){
+                    alert("Successfully registered. Now you can login");
+                    this.props.navigation.navigate('SignIn');
+                }
+                else if(jsonData['code'] == 2){
+                    alert("Username/Email already exist, try different")
+                }
+                else{
+                    alert("Failed to register")
+                }
+            })
             .catch((e)=>{
                 console.log(e);
             })

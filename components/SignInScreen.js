@@ -76,9 +76,12 @@ export default class SignInScreen extends Component {
                 if(jsonData['result'] == true){
                     AsyncStorage.setItem('USER', jsonData.user);
                     AsyncStorage.setItem('TOKEN', jsonData.token);
+                    alert("You are: "+jsonData['user']);
                     this.props.navigation.navigate('Dashboard');
                 }
-                alert(jsonData['user']);
+                else{
+                  alert("Wrong uername/password. Try again");
+                }
             })
             .catch((e)=>{
                 console.log(e);
@@ -118,13 +121,13 @@ export default class SignInScreen extends Component {
                         secureTextEntry/>
   
           <TouchableOpacity style={styles.buttonContainer} 
-                              onPress={this.navigatt} >
+                              onPress={this.test} >
                       <Text  style={styles.buttonText}>LOGIN</Text>                    
           </TouchableOpacity> 
 
-        <Text></Text>
+        {/* <Text></Text>
         <Button title="Test db btn" onPress={this.test} />
-        <Text></Text>
+        <Text></Text> */}
         <Button title="Try to go to dashboard" onPress={this.tester} />
         <Text></Text>
         <Button title="Set item" onPress={this.set} />
