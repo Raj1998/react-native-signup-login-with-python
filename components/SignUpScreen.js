@@ -21,7 +21,7 @@ export default class SignInScreen extends Component {
     };
 
     test = () => {
-        fetch("http://192.168.43.92:5000/signup", {
+        fetch(BASE_URL + "signup", {
             method: 'POST',            
             headerss: {
                 'Accept': 'application/json',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button, AsyncStorage } from 'react-native';
+import { Text, StyleSheet, View, Button, AsyncStorage } from 'react-native';
 import SignInScreen from './SignInScreen';
 import SignUpScreen from './SignUpScreen';
 import { 
@@ -7,10 +7,78 @@ import {
   createAppContainer,
 
 } from 'react-navigation';
-
+import * as Expo from "expo";
+// import Expo from 'expo';
 
 
 class WelcomeScreen extends Component {
+
+  sendData = (idToken, email, name, image_url) => {
+    fetch(BASE_URL+"googlelogin", {
+        method: 'POST',
+        
+        headerss: {
+            'Accept': 'application/json',
+            "Content-Type": "application/json",                
+        },
+        body: JSON.stringify({
+            idToken: idToken,
+            email: email,
+            name: name,
+            image_url: image_url
+        })
+    })
+        .then((resp)=>{
+            return resp.json();
+        })
+        .then((jsonData) => {
+            console.log(JSON.stringify(jsonData));
+            if(jsonData['result'] == true){
+                AsyncStorage.setItem('USER', jsonData.user);
+                // AsyncStorage.setItem('TOKEN', jsonData.token);
+                alert("You are: "+jsonData['user']);
+                this.props.navigation.navigate('Dashboard');
+            }
+            else{
+              alert("Something went wrong. Try again");
+            }
+        })
+        .catch((e)=>{
+            console.log(e);
+        })
+  }
+
+  signInWithGoogleAsync = async () => {
+    try {
+      const result = await Expo.Google.logInAsync({
+        androidClientId: "182143099738-lkujdpt6rl0ooed49fprsu3f1rdnirm3.apps.googleusercontent.com",
+        scopes: ['profile', 'email'],
+      });
+  
+      if (result.type === 'success') {  
+        console.log("succesful google signin");
+        var idToken = result.idToken;
+        var email = result.user.email;
+        var name = result.user.name;
+        var id = result.user.id;
+        var img_url = result.user.photoUrl;
+        
+        sendData(idToken, email, name, image_url)
+
+        console.log(result)
+        return result.accessToken;
+      } else {
+        console.log("cancelled");
+        alert("Sign In cancelled");
+        return { cancelled: true };
+      }
+    } catch (e) {
+      console.log("Exception"+e);
+      alert("Something went wrong... try again");
+      return { error: true };
+    }
+  }
+
   _isSignedIn = async () => {
     // try {
       const value = await AsyncStorage.getItem('USER');
@@ -42,12 +110,25 @@ class WelcomeScreen extends Component {
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        flexDirection: 'column',
       }}>
         <Text> Welcome!!! </Text>
           <Text>  </Text>
-          <Button title="Login" onPress={() => this.props.navigation.navigate('SignIn')} />
+          <View style={styles.buttonLayout} >
+            <Button title="Login" onPress={() => this.props.navigation.navigate('SignIn')} />
+          </View>
+
           <Text>  </Text>
-          <Button title="Sign Up" onPress={() => this.props.navigation.navigate('SignUp')} />
+          <View style={styles.buttonLayout} >
+            <Button title="Sign Up" onPress={() => this.props.navigation.navigate('SignUp')} />
+          </View>
+          
+          <Text>  </Text>
+          <View style={styles.buttonLayout} >
+            <Button title="Google" onPress={this.signInWithGoogleAsync} />
+          </View>
+
+
       </View>
     )
   }
@@ -68,4 +149,13 @@ const AuthStack = createStackNavigator(
     initialRouteName: "Home"
   }
   );
+
+const styles = StyleSheet.create({
+  buttonLayout:{
+      
+        marginHorizontal: 40 ,
+        
+  }
+});
+
 export default createAppContainer(AuthStack);

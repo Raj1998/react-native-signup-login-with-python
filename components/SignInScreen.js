@@ -3,8 +3,6 @@ import { Text, View, TextInput, TouchableOpacity, StyleSheet, Button } from 'rea
 import {AsyncStorage} from 'react-native';
 import {BASE_URL} from './meta.js';
 
-// const BASE_URL = "http://192.168.43.92:5000/";
-
 export default class SignInScreen extends Component {
     state = {
         email: '',
@@ -18,7 +16,7 @@ export default class SignInScreen extends Component {
 
     _storeData = async () => {
         try {
-          await AsyncStorage.setItem('USER', 'Rajukaju');
+          await AsyncStorage.setItem('USER', 'Raju');
         } catch (error) {
           // Error saving data
         }
