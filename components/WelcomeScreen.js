@@ -7,9 +7,11 @@ import {
   createAppContainer,
 
 } from 'react-navigation';
-import * as Expo from "expo";
-// import Expo from 'expo';
 
+import * as Expo from "expo";
+// import Expo from 'expo';   // this didn't worked (this was from expo's documentation)
+
+import {BASE_URL} from './meta.js';
 
 class WelcomeScreen extends Component {
 
@@ -63,7 +65,7 @@ class WelcomeScreen extends Component {
         var id = result.user.id;
         var img_url = result.user.photoUrl;
         
-        sendData(idToken, email, name, image_url)
+        this.sendData(idToken, email, name, img_url)
 
         console.log(result)
         return result.accessToken;

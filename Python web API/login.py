@@ -126,16 +126,16 @@ def g_login():
 		
 		db = MySQLdb.connect("localhost","root","", "pyhon_api")
 		cursor = db.cursor()		
-		email = email.encode('utf-8')
+		email_to_db = email.encode('utf-8')
 		
 
 		sql = "INSERT INTO `users`(`email`, `external_type`, `external_id`) VALUES (%s,%s,%s)"
 		respi = ""
 		# try:
-		cursor.execute(sql, (email, external_type, userid))
+		cursor.execute(sql, (email_to_db, external_type, userid))
 		db.commit()
 		resp['result'] = True
-		resp['user'] = user
+		resp['user'] = email
 		resp['code'] = 1
 		resp['err_log'] = ""
 		db.close()
