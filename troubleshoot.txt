@@ -1,0 +1,6 @@
+Download mysql connector 
+https://dev.mysql.com/downloads/connector/python/
+(I used platform independent .zip archieve)
+cd into that directory
+$ python3 setup.py install
+

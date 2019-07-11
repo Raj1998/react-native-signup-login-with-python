@@ -57,7 +57,7 @@ class WelcomeScreen extends Component {
         scopes: ['profile', 'email'],
       });
   
-      if (result.type === 'success') {  
+      if (result.type === 'success') {
         console.log("succesful google signin");
         var idToken = result.idToken;
         var email = result.user.email;
