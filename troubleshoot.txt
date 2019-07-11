@@ -4,3 +4,5 @@ https://dev.mysql.com/downloads/connector/python/
 cd into that directory
 $ python3 setup.py install
 
+put your client key in key.py as 
+CLIENT_ID = "your key from google console"
