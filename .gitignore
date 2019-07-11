@@ -6,4 +6,3 @@ npm-debug.*
 *.key
 *.mobileprovision
 PythonWebAPI/flaskApi/
-PythonWebAPI/key.py
