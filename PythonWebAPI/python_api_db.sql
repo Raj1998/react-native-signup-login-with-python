@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 11, 2019 at 06:34 AM
+-- Generation Time: Jul 12, 2019 at 12:47 PM
 -- Server version: 8.0.16
 -- PHP Version: 7.1.23
 
@@ -35,7 +35,7 @@ CREATE TABLE `users` (
   `email` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `password` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `verified` tinyint(1) NOT NULL DEFAULT '0',
-  `auth_token` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `auth_token` varchar(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `temp_code` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `external_id` varchar(60) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `external_type` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL
@@ -48,7 +48,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `email`, `password`, `verified`, `auth_token`, `temp_code`, `external_id`, `external_type`) VALUES
 (1, 'raj@gmail.com', '1234', 0, 'tokenraj', '', NULL, 'email'),
 (27, 'a', 'a', 0, '7da6llrnq7c', '', NULL, 'email'),
-(34, 'newcr20177@gmail.com', NULL, 0, NULL, NULL, '113037035932380548713', 'google');
+(38, 'aa', 'aa', 0, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFhIn0.T8sCWc4IAEaleMv57jaEaPowHI-9PS6Ym3J5Oqswjxw', NULL, NULL, 'email'),
+(39, 'newcr20177@gmail.com', NULL, 0, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Im5ld2NyMjAxNzdAZ21haWwuY29tIn0.OtVzbYroGB8h6fpCw90EHBuJKfXMLPH-4J66iiYeeeE', NULL, '113037035932380548713', 'google');
 
 --
 -- Indexes for dumped tables
@@ -68,7 +69,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
