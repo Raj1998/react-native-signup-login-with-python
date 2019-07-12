@@ -8,30 +8,37 @@ export default class DashboardScreen extends Component {
       const value = await AsyncStorage.getItem('USER');
       if (value !== null) {
         // We have data!!
-        console.log('data che....'+value);
+        console.log('DashboardScreen - AsyncStorage key - USER found -'+value);
+        this.setState({user: value});  
       }
       else{
-        console.log('----value set nahi...');
+        console.log('DashboardScreen - AsyncStorage is empty');
         this.props.navigation.navigate('Welcome');
       }
     } catch (error) {
       // Error retrieving data
-      console.log('exeptn aai -----');
+      console.log('DashboardScreen - exeptn');
     }
   }
   
   _logout = async () => {
     try {
-      await AsyncStorage.removeItem('USER');
+      await AsyncStorage.clear();
       this.props.navigation.navigate('Welcome');
     } catch (error) {
       // Error saving data
     }
   }
 
+  state = {
+    user : "-"
+  }
+
   constructor() {
     super();
     this._isSignedIn();
+    
+
   }
 
   render() {
@@ -43,8 +50,9 @@ export default class DashboardScreen extends Component {
         justifyContent: 'center',
       }}>
         <Text> Dashboard Screen </Text>
+        <Text> USER: {this.state.user}</Text>
         <Text> </Text>
-        <Button title="Log Out" onPress={this._logout} />
+        <Button title="Log out " onPress={this._logout} />
       </View>
     )
   }

@@ -49,11 +49,11 @@ export default class SignInScreen extends Component {
 
     static navigationOptions = ({ navigation }) => {
         return{
-            title: "SignIn",
+            title: "SignIn     ",
         }
     };
 
-    test = () => {
+    login = () => {
         fetch(BASE_URL+"login", {
             method: 'POST',
             
@@ -119,19 +119,23 @@ export default class SignInScreen extends Component {
                         secureTextEntry/>
   
           <TouchableOpacity style={styles.buttonContainer} 
-                              onPress={this.test} >
+                              onPress={this.login} >
                       <Text  style={styles.buttonText}>LOGIN</Text>                    
           </TouchableOpacity> 
 
-        {/* <Text></Text>
-        <Button title="Test db btn" onPress={this.test} />
-        <Text></Text> */}
-        <Button title="Try to go to dashboard" onPress={this.tester} />
-        <Text></Text>
-        <Button title="Set item" onPress={this.set} />
-        <Text></Text>
-        <Button title="remove item" onPress={this.rem} />
-        <Text></Text>
+          <TouchableOpacity style={styles.buttonContainer} 
+                              onPress={this.tester} >
+                      <Text  style={styles.buttonText}>Try to go to dashboard</Text>                    
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonContainer} 
+                              onPress={this.set} >
+                      <Text  style={styles.buttonText}>Set item</Text>                    
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonContainer} 
+                              onPress={this.rem} >
+                      <Text  style={styles.buttonText}>Remove item</Text>                    
+          </TouchableOpacity>
+        
           
           
         </View>
@@ -156,7 +160,8 @@ const styles = StyleSheet.create({
     buttonContainer:{
         backgroundColor: '#218F76',
         marginHorizontal: 20 ,
-        paddingVertical: 15
+        paddingVertical: 15,
+        marginVertical: 5,
     },
     buttonText:{
         color: '#fff',

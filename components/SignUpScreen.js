@@ -16,7 +16,7 @@ export default class SignInScreen extends Component {
 
     static navigationOptions = ({ navigation }) => {
         return{
-            title: "Sign Up",
+            title: "SignUp    ",
         }
     };
 
@@ -39,7 +39,11 @@ export default class SignInScreen extends Component {
                 console.log(JSON.stringify(jsonData));
                 if(jsonData['code'] == 1){
                     alert("Successfully registered. Now you can login");
-                    this.props.navigation.navigate('SignIn');
+                    AsyncStorage.setItem('USER', jsonData.user);
+                    AsyncStorage.setItem('TOKEN', jsonData.token);
+                    alert("You are: "+jsonData['user']);
+                    this.props.navigation.navigate('Dashboard');
+                    // this.props.navigation.navigate('SignIn');
                 }
                 else if(jsonData['code'] == 2){
                     alert("Username/Email already exist, try different")

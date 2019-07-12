@@ -54,6 +54,7 @@ class WelcomeScreen extends Component {
     try {
       const result = await Expo.Google.logInAsync({
         androidClientId: "182143099738-lkujdpt6rl0ooed49fprsu3f1rdnirm3.apps.googleusercontent.com",
+        // add iosClientId if needed
         scopes: ['profile', 'email'],
       });
   
@@ -82,17 +83,17 @@ class WelcomeScreen extends Component {
   }
 
   _isSignedIn = async () => {
-    // try {
+    try {
       const value = await AsyncStorage.getItem('USER');
       if (value !== null) {
         // We have data!!
-        console.log('data che....'+value);
+        console.log('WelcomeScreen - AsyncStorage key - USER found -'+value);
         this.props.navigation.navigate('Dashboard');
       }
-    // } catch (error) {
-    //   // Error retrieving data
-    //   console.log('exeptn aai -----');
-    // }
+    } catch (error) {
+      // Error retrieving data
+      console.log('exeptn in _isSignedIn method.');
+    }
   }
 
   constructor(){
@@ -109,25 +110,25 @@ class WelcomeScreen extends Component {
     return (
       <View style={{
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#6AB04A',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
       }}>
-        <Text> Welcome!!! </Text>
-          <Text>  </Text>
+        <Text style={{fontSize: 25, color: '#fff'}}> Welcome !!! </Text>
+          <Text></Text>
           <View style={styles.buttonLayout} >
-            <Button title="Login" onPress={() => this.props.navigation.navigate('SignIn')} />
+            <Button title="Login " color="#218F76" onPress={() => this.props.navigation.navigate('SignIn')} />
           </View>
 
-          <Text>  </Text>
+          
           <View style={styles.buttonLayout} >
-            <Button title="Sign Up" onPress={() => this.props.navigation.navigate('SignUp')} />
+            <Button title="Sign Up " color="#218F76" onPress={() => this.props.navigation.navigate('SignUp')} />
           </View>
           
-          <Text>  </Text>
+        
           <View style={styles.buttonLayout} >
-            <Button title="Google" onPress={this.signInWithGoogleAsync} />
+            <Button title="Google  " color="#218F76" onPress={this.signInWithGoogleAsync} />
           </View>
 
 
@@ -144,8 +145,8 @@ const AuthStack = createStackNavigator(
         header: null //this will hide the header
       },
     },
-    SignIn: SignInScreen,
-    SignUp: SignUpScreen,
+    SignIn : SignInScreen,
+    SignUp : SignUpScreen,
   },   
   {
     initialRouteName: "Home"
@@ -154,9 +155,9 @@ const AuthStack = createStackNavigator(
 
 const styles = StyleSheet.create({
   buttonLayout:{
-      
-        marginHorizontal: 40 ,
-        
+        marginHorizontal: 20,
+        marginVertical: 5,
+        width: 150,
   }
 });
 

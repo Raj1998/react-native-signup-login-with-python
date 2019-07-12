@@ -5,5 +5,5 @@ npm-debug.*
 *.p12
 *.key
 *.mobileprovision
-PythonWebAPI/flaskApi/
+PythonWebAPI/myEnv/
 PythonWebAPI/key.py

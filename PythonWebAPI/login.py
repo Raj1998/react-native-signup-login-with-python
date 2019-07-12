@@ -4,9 +4,12 @@ import MySQLdb
 import json
 import string
 import random
+import jwt
 from google.oauth2 import id_token
 from google.auth.transport import requests
 from key import CLIENT_ID
+
+JWT_SECRETKEY = "SuperSecretKey"
 
 @app.route("/")
 def hello():
@@ -25,7 +28,7 @@ def login():
 		cursor = db.cursor()
 		sql = "SELECT * FROM `users` WHERE email=%s and password=%s and external_type='email'"
 		# print(sql)
-		respi = ""
+		# respi = ""
 		resp = {'result': False, 'user': None}
 		try:
 			cursor.execute(sql, (email, password))
@@ -46,8 +49,8 @@ def login():
 			else:
 				resp['comments'] = "multiple users!!"
 		except:
-			respi = "exception"
-		   # print("Error: unable to fecth data")
+			# respi = "exception"
+		   print("Error: unable to fecth data")
 		db.close()
 		return json.dumps(resp)
 
@@ -63,6 +66,7 @@ def register():
 		db = MySQLdb.connect("localhost","root","password", "python_api")
 		cursor = db.cursor()
 		data = request.get_json(force = True)
+		email_raw = data['email']
 		email = data['email'].encode('utf-8')
 		password = data['password'].encode('utf-8')
 		external_type = 'email'
@@ -70,7 +74,7 @@ def register():
 		# TODO
 		# ENCODING PROBLEM FOR EX. IN RUPEE SIGN...ETC
 		print(email, password)
-		resp = {'result': False, 'code': 0, 'err_log': ""}
+		resp = {'result': False, 'code': 0, 'err_log': "", 'user':None}
 #       code - 0 -> fail
 #       code - 1 -> done
 #       code - 2 -> duplicate entry
@@ -82,14 +86,18 @@ def register():
 		results_test = cursor.fetchall()
 		if len(results_test) == 0:
 			# token = ''.join(random.choices(string.ascii_lowercase + string.digits, k=11))
+			token = jwt.encode({'username': email_raw}, JWT_SECRETKEY)
+			token_s = token.decode()
 			print("inside post req of sign upppppp")
 			# cursor = db.cursor()
-			sql = "INSERT INTO `users`(`email`, `password`, `external_type`) VALUES (%s,%s,%s)"
+			sql = "INSERT INTO `users`(`email`, `password`, `auth_token`, `external_type`) VALUES (%s,%s,%s,%s)"
 			# print(sql)
-			cursor.execute(sql, (email, password, external_type))
+			cursor.execute(sql, (email, password, token_s, external_type))
 			db.commit()
 			resp['result'] = True
+			resp['user'] = email_raw
 			resp['code'] = 1
+			resp['token'] = token_s
 			# try:
 				
 			# except:
@@ -137,14 +145,17 @@ def g_login():
 	results_test = cursor.fetchall()
 	if len(results_test) == 0:
 		print('Google user sign up')
-		sql = "INSERT INTO `users`(`email`, `external_type`, `external_id`) VALUES (%s,%s,%s)"
+		token = jwt.encode({'username': email}, JWT_SECRETKEY)
+		token_s = token.decode()
+		sql = "INSERT INTO `users`(`email`, `external_type`, `auth_token`, `external_id`) VALUES (%s,%s,%s,%s)"
 		# respi = ""
 		# try:
-		print(email, external_type, userid)
-		cursor.execute(sql, (email, external_type, userid))
+		print(email, external_type, token_s, userid)
+		cursor.execute(sql, (email, external_type, token_s, userid))
 		db.commit()
 		resp['result'] = True
 		resp['user'] = email
+		resp['token'] = token_s
 		resp['code'] = 1
 		resp['err_log'] = ""
 		db.close()
