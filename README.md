@@ -13,12 +13,24 @@ This is a react native project created with expo and python flask on backend
 
 ## ScreenShots
 
-<img src="img/1.jpg" width="40%">
-<img src="img/2.jpg" width="40%">
-<img src="img/3.jpg" width="40%">
-<img src="img/4.jpg" width="40%">
-<img src="img/5.jpg" width="40%">
-<img src="img/6.jpg" width="40%">
+<kbd>
+    <img src="img/1.jpg" width="40%">
+</kbd>
+<kbd>
+    <img src="img/2.jpg" width="40%">
+</kbd>
+<kbd>
+    <img src="img/3.jpg" width="40%">
+</kbd>
+<kbd>
+    <img src="img/4.jpg" width="40%">
+</kbd>
+<kbd>
+    <img src="img/5.jpg" width="40%">
+</kbd>
+<kbd>
+    <img src="img/6.jpg" width="40%">
+</kbd>
 
 
 ## Notes
