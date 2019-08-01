@@ -10,3 +10,8 @@ This is a react native project created with expo and python flask on backend
 6. import database from `PythonWebAPI/python_api_db.sql` file
 7. Create `key.py` file and set `CLIENT_ID` from google console
 8. `./run_py_server.sh`
+
+## Notes
+1. Password is stored as plain text for testing only
+2. For development Phone and Laptop must be in same network
+3. JWT might not be stored in db

@@ -46,10 +46,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `verified`, `auth_token`, `temp_code`, `external_id`, `external_type`) VALUES
-(1, 'raj@gmail.com', '1234', 0, 'tokenraj', '', NULL, 'email'),
+(1, 'raj@test.com', '1234', 0, 'tokenraj', '', NULL, 'email'),
 (27, 'a', 'a', 0, '7da6llrnq7c', '', NULL, 'email'),
-(38, 'aa', 'aa', 0, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFhIn0.T8sCWc4IAEaleMv57jaEaPowHI-9PS6Ym3J5Oqswjxw', NULL, NULL, 'email'),
-(39, 'newcr20177@gmail.com', NULL, 0, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6Im5ld2NyMjAxNzdAZ21haWwuY29tIn0.OtVzbYroGB8h6fpCw90EHBuJKfXMLPH-4J66iiYeeeE', NULL, '113037035932380548713', 'google');
+(38, 'aa', 'aa', 0, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImFhIn0.T8sCWc4IAEaleMv57jaEaPowHI-9PS6Ym3J5Oqswjxw', NULL, NULL, 'email');
 
 --
 -- Indexes for dumped tables

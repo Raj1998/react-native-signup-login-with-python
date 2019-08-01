@@ -123,18 +123,20 @@ export default class SignInScreen extends Component {
                       <Text  style={styles.buttonText}>LOGIN</Text>                    
           </TouchableOpacity> 
 
-          <TouchableOpacity style={styles.buttonContainer} 
+          {/* <TouchableOpacity style={styles.buttonContainer} 
                               onPress={this.tester} >
                       <Text  style={styles.buttonText}>Try to go to dashboard</Text>                    
           </TouchableOpacity>
+
           <TouchableOpacity style={styles.buttonContainer} 
                               onPress={this.set} >
                       <Text  style={styles.buttonText}>Set item</Text>                    
           </TouchableOpacity>
+
           <TouchableOpacity style={styles.buttonContainer} 
                               onPress={this.rem} >
                       <Text  style={styles.buttonText}>Remove item</Text>                    
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         
           
           

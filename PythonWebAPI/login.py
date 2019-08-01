@@ -167,7 +167,7 @@ def g_login():
 	elif len(results_test) == 1:
 		print('Google user in db please log them in')
 		resp['result'] = True
-		# resp['user'] = "super su raj"
+		resp['err_log'] = ""
 		resp['code'] = 2
 
 		for ro in results_test:

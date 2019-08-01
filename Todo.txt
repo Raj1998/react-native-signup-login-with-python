@@ -2,4 +2,4 @@
 
 // signu.js TO API - encoding problem
 
-generate auth token only when successful log in is done and delete it when logout
+// generate auth token only when successful log in is done and delete it when logout
