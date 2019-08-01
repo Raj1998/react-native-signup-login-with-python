@@ -12,25 +12,34 @@ This is a react native project created with expo and python flask on backend
 8. `./run_py_server.sh`
 
 ## ScreenShots
+<table>
+<tr>
+    <td>
+        <img src="img/1.jpg" width="80%">
+    </td>
+    <td>
+        <img src="img/2.jpg" width="80%">
+    </td>
+</tr>
+<tr>
+    <td>
+        <img src="img/3.jpg" width="80%">
+    </td>
+    <td>
+        <img src="img/4.jpg" width="80%">
+    </td>
+</tr>
+<tr>
+    <td>
+        <img src="img/5.jpg" width="80%">
+    </td>
+    <td>
+        <img src="img/6.jpg" width="80%">
+    </td>
+</tr>
 
-<kbd>
-    <img src="img/1.jpg" width="40%">
-</kbd>
-<kbd>
-    <img src="img/2.jpg" width="40%">
-</kbd>
-<kbd>
-    <img src="img/3.jpg" width="40%">
-</kbd>
-<kbd>
-    <img src="img/4.jpg" width="40%">
-</kbd>
-<kbd>
-    <img src="img/5.jpg" width="40%">
-</kbd>
-<kbd>
-    <img src="img/6.jpg" width="40%">
-</kbd>
+</table>
+
 
 
 ## Notes
