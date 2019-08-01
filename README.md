@@ -11,6 +11,16 @@ This is a react native project created with expo and python flask on backend
 7. Create `key.py` file and set `CLIENT_ID` from google console
 8. `./run_py_server.sh`
 
+## ScreenShots
+
+<img src="img/1.jpg" width="40%">
+<img src="img/2.jpg" width="40%">
+<img src="img/3.jpg" width="40%">
+<img src="img/4.jpg" width="40%">
+<img src="img/5.jpg" width="40%">
+<img src="img/6.jpg" width="40%">
+
+
 ## Notes
 1. Password is stored as plain text for testing only
 2. For development Phone and Laptop must be in same network
