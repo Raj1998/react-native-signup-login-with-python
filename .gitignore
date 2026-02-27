@@ -7,3 +7,4 @@ npm-debug.*
 *.mobileprovision
 PythonWebAPI/myEnv/
 PythonWebAPI/key.py
+.DS_Store
